@@ -1,4 +1,5 @@
 name: pull request validation
+
 on:
   workflow_call:
     inputs:

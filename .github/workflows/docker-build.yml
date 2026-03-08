@@ -6,10 +6,14 @@ on:
       environment:
         required: true
         type: string
+      image_name:
+        required: true
+        type: string
 
 jobs:
   docker:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
 
     steps:
       - uses: actions/checkout@v4
