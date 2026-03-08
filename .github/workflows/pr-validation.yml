@@ -26,14 +26,10 @@ jobs:
       - name: Run unit tests
         run: yarn test:cov
 
-      - name: show secret enviroment
-        run: echo "${{ secrets.SONAR_TOKEN }}  ${{ secrets.SONAR_HOST_URL }}"
-
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v2
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: >
             -Dsonar.organization=gym-flow-platform
