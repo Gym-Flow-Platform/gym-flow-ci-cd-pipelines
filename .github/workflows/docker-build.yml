@@ -3,7 +3,7 @@ name: Docker Build
 on:
   workflow_call:
     inputs:
-      image_name:
+      environment:
         required: true
         type: string
 
