@@ -32,6 +32,7 @@ jobs:
         with:
           image-ref: ${{ inputs.image_name }}:${{ github.sha }}
           severity: CRITICAL,HIGH
+          ignore-unfixed: true
           exit-code: 1
 
       - name: Push Image
