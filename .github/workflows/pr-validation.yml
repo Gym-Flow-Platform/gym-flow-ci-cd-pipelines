@@ -1,10 +1,10 @@
 name: pull request validation
 on:
   workflow_call:
-    inputs:
-      config-path:
-        required: true
-        type: string
+    # inputs:
+    #   config-path:
+    #     required: true
+    #     type: string
     secrets:
       personal_access_token:
         required: true
