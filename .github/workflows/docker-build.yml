@@ -25,7 +25,11 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Image
-        run: docker build -t ${{ inputs.image_name }}:${{ github.sha }} .
+        run: |
+          docker build \
+            -t ${{ inputs.image_name }}:${{ github.sha }} \
+            -t ${{ inputs.image_name }}:latest \
+            .
 
       - name: Scan Docker Image
         uses: aquasecurity/trivy-action@0.20.0
@@ -35,5 +39,7 @@ jobs:
           ignore-unfixed: true
           exit-code: 1
 
-      - name: Push Image
-        run: docker push ${{ inputs.image_name }}:${{ github.sha }}
+      - name: Push Images
+        run: |
+          docker push ${{ inputs.image_name }}:${{ github.sha }}
+          docker push ${{ inputs.image_name }}:latest
